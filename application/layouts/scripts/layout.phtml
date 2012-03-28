@@ -1,0 +1,80 @@
+<!doctype html>
+<head>
+    <title>News123 Portal de noticias</title>
+    <meta charset="utf-8">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+        }
+    </style>
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+
+</head>
+
+<body>
+
+    <div class="topbar">
+        <div class="topbar-inner">
+            <div class="container-fluid">
+                <a class="brand" href="/">Blog de Noticias con Zend Framework</a>
+                <ul class="nav">
+                    <li class="active"><a href="/"><?php echo $this->translate->_('nav.home') ?></a></li>
+                    <li><a href="/categorias"><?php echo $this->translate->_('nav.category') ?></a></li>
+                    <li><a href="/contact"><?php echo $this->translate->_('nav.contact') ?></a></li>
+                    <?php
+                    $auth = Zend_Auth::getInstance();
+                    if ( $auth->hasIdentity()) :
+                    ?>
+                        <li>Usuario:<?php echo $auth->getIdentity() ?></li>
+                        <li> <a href="/usuario/logout">Logout</a>
+                    <?php else: ?>
+                        <li><a href="/usuario/login/">Login</a>
+                    <?php endif;?>
+                    
+                </ul>
+				<ul>
+					<li><a href="?lang=es"><img src="/imgs/es.png" width="18"/> </a></li>
+					<li><a href="?lang=en"><img src="/imgs/en.png" width="18"/> </a></li>
+				</ul>
+                <?php /* <p class="pull-right">Logged in as <a href="#">username</a></p> */ ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="sidebar">
+            <div class="well">
+                <h5> Categorias</h5>
+                <ul>
+                <?php foreach ( $this->categories() as $cat ):?>
+                    <li><a href="/categorias/ver/id/<?php echo $cat->id?>">
+                            <?php echo $cat->name ?></a>
+                    </li>
+                <?php endforeach;?>
+            </div>
+        </div>
+        <div class="content">
+
+            <?php echo $this->layout()->content; ?>
+
+            <footer>
+                <p>&copy; Blog creado con Zend Framework <?php echo date('Y') ?></p>
+            </footer>
+        </div>
+    </div>
+
+</body>
+

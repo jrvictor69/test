@@ -1,0 +1,21 @@
+<div>
+
+
+    <?php if (count($this->paginator)) : ?>
+
+        <?php foreach ($this->paginator as $post) : ?>
+
+            <div span="row">
+                <a href="/posts/view/id/<?php echo $post->id; ?>"><?php echo $post->title; ?></a>
+                <span><?php echo $post->cname ?></span>
+            </div>
+        <?php endforeach; ?>
+
+    <?php endif; ?>
+
+
+    <?php if (count($this->paginator)): ?>
+        <?php echo $this->paginator; ?>
+    <?php endif; ?>
+
+</div>

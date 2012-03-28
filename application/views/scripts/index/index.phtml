@@ -1,0 +1,10 @@
+<h1><?php echo $this->translate->_('home.title') ?></h1>
+
+
+<div>
+	<?php foreach( $this->titulares as $tit ) : ?>
+	<article>
+		<a href="/posts/ver/id/<?php echo $tit->id;?>" title="<?php echo $tit->title;?>"><?php echo $tit->title;?></a>
+	</article>
+	<?php endforeach;?>
+</div>
