@@ -40,5 +40,12 @@ class AboutController {
         $this->view->request   = $errors->request;
     }
     
+	public function myAction() {
+		$name = "victor";
+	}
     
+	
+	public function pepeAction() {
+		echo "hello Im pepe action";
+	}
 }
