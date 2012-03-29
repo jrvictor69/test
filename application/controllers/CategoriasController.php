@@ -41,4 +41,8 @@ class CategoriasController extends Zend_Controller_Action
         $this->view->paginator = $paginator;
 
     }
+    
+    public function ver2Action() {
+    	$new =_("this is a new commentario");
+    }
 }
